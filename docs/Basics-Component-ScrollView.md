@@ -2,7 +2,7 @@
 id: basics-component-scrollview
 title: ScrollView
 layout: docs
-category: Basics
+category: The Basics
 permalink: docs/basics-component-scrollview.html
 next: basics-component-listview
 ---
@@ -17,21 +17,22 @@ The [`ScrollView`](/react-native/docs/scrollview.html) is a generic scrolling co
 
 This contrived example creates a horizontal `ScrollView` with a static amount of heterogenous elements (images and text).
 
-```JavaScript
-import React, { AppRegistry, ScrollView, Image, Text, View } from 'react-native'
+```ReactNativeWebPlayer
+import React, { Component } from 'react';
+import{ AppRegistry, ScrollView, Image, Text, View } from 'react-native'
 
-var SimpleScrollView = React.createClass({
-  render(){
+class ScrollViewBasics extends Component {
+  render() {
       return(
         <ScrollView horizontal={true}>
           <View>
-            <Image source={require('./img/check.png')} />
+            <Image source={require('./img/favicon.png')} />
           </View>
           <View>
-            <Image source={require('./img/check.png')} />
+            <Image source={require('./img/favicon.png')} />
           </View>
           <View>
-            <Image source={require('./img/check.png')} />
+            <Image source={require('./img/favicon.png')} />
           </View>
           <View>
             <Text style={{fontSize:96}}>Text1</Text>
@@ -46,13 +47,13 @@ var SimpleScrollView = React.createClass({
             <Text style={{fontSize:96}}>Text4</Text>
           </View>
           <View>
-            <Image source={require('./img/check.png')} />
+            <Image source={require('./img/favicon.png')} />
           </View>
           <View>
-            <Image source={require('./img/check.png')} />
+            <Image source={require('./img/favicon.png')} />
           </View>
           <View>
-            <Image source={require('./img/check.png')} />
+            <Image source={require('./img/favicon.png')} />
           </View>
           <View>
             <Text style={{fontSize:96}}>Text5</Text>
@@ -63,8 +64,8 @@ var SimpleScrollView = React.createClass({
         </ScrollView>
     );
   }
-});
+}
 
 
-AppRegistry.registerComponent('MyApp', () => SimpleScrollView);
+AppRegistry.registerComponent('AwesomeProject', () => ScrollViewBasics);
 ```
