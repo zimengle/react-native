@@ -16,7 +16,7 @@
 
 const ErrorUtils = require('ErrorUtils');
 const JSTimersExecution = require('JSTimersExecution');
-const Systrace = require('Systrace');
+// const Systrace = require('Systrace');
 
 const deepFreezeAndThrowOnMutationInDev = require('deepFreezeAndThrowOnMutationInDev');
 const invariant = require('fbjs/lib/invariant');
@@ -144,6 +144,7 @@ class MessageQueue {
   }
 
   registerCallableModule(name: string, module: Object) {
+    console.info(name);
     this._callableModules[name] = module;
   }
 
@@ -187,7 +188,7 @@ class MessageQueue {
       this._queue = [[], [], [], this._callID];
       this._lastFlush = now;
     }
-    Systrace.counterEvent('pending_js_to_native_queue', this._queue[0].length);
+    // Systrace.counterEvent('pending_js_to_native_queue', this._queue[0].length);
     if (__DEV__ && this.__spy && isFinite(moduleID)) {
         this.__spy(
           { type: TO_NATIVE,
@@ -210,15 +211,15 @@ class MessageQueue {
    */
 
   __callImmediates() {
-    Systrace.beginEvent('JSTimersExecution.callImmediates()');
+    // Systrace.beginEvent('JSTimersExecution.callImmediates()');
     guard(() => JSTimersExecution.callImmediates());
-    Systrace.endEvent();
+    // Systrace.endEvent();
   }
 
   __callFunction(module: string, method: string, args: Array<any>) {
     this._lastFlush = new Date().getTime();
     this._eventLoopStartTime = this._lastFlush;
-    Systrace.beginEvent(`${module}.${method}()`);
+    // Systrace.beginEvent(`${module}.${method}()`);
     if (__DEV__ && this.__spy) {
       this.__spy({ type: TO_JS, module, method, args});
     }
@@ -234,7 +235,7 @@ class MessageQueue {
       method, module
     );
     const result = moduleMethods[method].apply(moduleMethods, args);
-    Systrace.endEvent();
+    // Systrace.endEvent();
     return result;
   }
 
@@ -262,8 +263,8 @@ class MessageQueue {
       if (callback && this.__spy && __DEV__) {
         this.__spy({ type: TO_JS, module:null, method:profileName, args });
       }
-      Systrace.beginEvent(
-        `MessageQueue.invokeCallback(${profileName}, ${stringifySafe(args)})`);
+      /*Systrace.beginEvent(
+        `MessageQueue.invokeCallback(${profileName}, ${stringifySafe(args)})`);*/
     } else {
       if (!callback) {
         return;
@@ -275,7 +276,7 @@ class MessageQueue {
     callback.apply(null, args);
 
     if (__DEV__) {
-      Systrace.endEvent();
+      // Systrace.endEvent();
     }
   }
 }

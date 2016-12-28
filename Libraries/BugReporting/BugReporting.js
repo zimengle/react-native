@@ -22,7 +22,7 @@ type SourceCallback = () => string;
 type DebugData = { extras: ExtraData, files: ExtraData };
 
 function defaultExtras() {
-  BugReporting.addFileSource('react_hierarchy.txt', () => require('dumpReactTree')());
+  // BugReporting.addFileSource('react_hierarchy.txt', () => require('dumpReactTree')());
 }
 
 /**

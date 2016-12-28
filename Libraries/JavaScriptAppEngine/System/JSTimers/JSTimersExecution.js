@@ -11,7 +11,7 @@
  */
 'use strict';
 
-const Systrace = require('Systrace');
+// const Systrace = require('Systrace');
 
 const invariant = require('fbjs/lib/invariant');
 const keyMirror = require('fbjs/lib/keyMirror');
@@ -81,7 +81,7 @@ const JSTimersExecution = {
 
     if (__DEV__) {
       const identifier = JSTimersExecution.identifiers[timerIndex] || {};
-      Systrace.beginEvent('Systrace.callTimer: ' + identifier.methodName);
+      // Systrace.beginEvent('Systrace.callTimer: ' + identifier.methodName);
     }
 
     // Clear the metadata
@@ -121,7 +121,7 @@ const JSTimersExecution = {
     }
 
     if (__DEV__) {
-      Systrace.endEvent();
+      // Systrace.endEvent();
     }
   },
 
@@ -189,7 +189,7 @@ const JSTimersExecution = {
    * more immediates are queued up (can be used as a condition a while loop).
    */
   callImmediatesPass() {
-    Systrace.beginEvent('JSTimersExecution.callImmediatesPass()');
+    // Systrace.beginEvent('JSTimersExecution.callImmediatesPass()');
 
     // The main reason to extract a single pass is so that we can track
     // in the system trace
@@ -204,7 +204,7 @@ const JSTimersExecution = {
       }
     }
 
-    Systrace.endEvent();
+    // Systrace.endEvent();
 
     return JSTimersExecution.immediates.length > 0;
   },

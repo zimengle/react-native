@@ -15,7 +15,7 @@ const MessageQueue = require('MessageQueue');
 const BatchedBridge = new MessageQueue();
 
 // TODO: Move these around to solve the cycle in a cleaner way.
-BatchedBridge.registerCallableModule('Systrace', require('Systrace'));
+// BatchedBridge.registerCallableModule('Systrace', require('Systrace'));
 BatchedBridge.registerCallableModule('JSTimersExecution', require('JSTimersExecution'));
 BatchedBridge.registerCallableModule('HeapCapture', require('HeapCapture'));
 BatchedBridge.registerCallableModule('SamplingProfiler', require('SamplingProfiler'));

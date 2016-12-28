@@ -9,7 +9,8 @@
  * @noflow - get/set properties not yet supported by flow. also `...require(x)` is broken #6560135
  */
 'use strict';
-
+require('RCTEventEmitter');
+require('InitializeJavaScriptAppEngine');
 const warning = require('fbjs/lib/warning');
 
 if (__DEV__) {
@@ -27,7 +28,7 @@ if (__DEV__) {
 // Export React, plus some native additions.
 const ReactNative = {
   // Components
-  get ActivityIndicator() { return require('ActivityIndicator'); },
+  /*get ActivityIndicator() { return require('ActivityIndicator'); },
   get ActivityIndicatorIOS() { return require('ActivityIndicatorIOS'); },
   get ART() { return require('ReactNativeART'); },
   get DatePickerIOS() { return require('DatePickerIOS'); },
@@ -76,9 +77,9 @@ const ReactNative = {
   get AdSupportIOS() { return require('AdSupportIOS'); },
   get Alert() { return require('Alert'); },
   get AlertIOS() { return require('AlertIOS'); },
-  get Animated() { return require('Animated'); },
+  get Animated() { return require('Animated'); },*/
   get AppRegistry() { return require('AppRegistry'); },
-  get AppState() { return require('AppState'); },
+  /*get AppState() { return require('AppState'); },
   get AppStateIOS() { return require('AppStateIOS'); },
   get AsyncStorage() { return require('AsyncStorage'); },
   get BackAndroid() { return require('BackAndroid'); },
@@ -123,10 +124,10 @@ const ReactNative = {
   // Prop Types
   get ColorPropType() { return require('ColorPropType'); },
   get EdgeInsetsPropType() { return require('EdgeInsetsPropType'); },
-  get PointPropType() { return require('PointPropType'); },
+  get PointPropType() { return require('PointPropType'); },*/
 
   // See http://facebook.github.io/react/docs/addons.html
-  addons: {
+  /*addons: {
     get LinkedStateMixin() {
       if (__DEV__) {
         addonWarn('LinkedStateMixin', 'react-addons-linked-state-mixin');
@@ -175,7 +176,7 @@ const ReactNative = {
       }
       return require('react/lib/update');
     },
-  },
+  },*/
 };
 
 // Better error messages when accessing React APIs on ReactNative
@@ -194,7 +195,7 @@ if (__DEV__) {
 
 // Preserve getters with warnings on the internal ReactNative copy without
 // invoking them.
-const ReactNativeInternal = require('react/lib/ReactNative');
+/*const ReactNativeInternal = require('react/lib/ReactNative');
 function applyForwarding(key) {
   if (__DEV__) {
     Object.defineProperty(
@@ -208,10 +209,10 @@ function applyForwarding(key) {
 }
 for (const key in ReactNativeInternal) {
   applyForwarding(key);
-}
+}*/
 
 if (__DEV__) {
-  Object.defineProperty(ReactNative.addons, 'Perf', {
+ /* Object.defineProperty(ReactNative.addons, 'Perf', {
     enumerable: true,
     get: () => {
       if (__DEV__) {
@@ -228,7 +229,7 @@ if (__DEV__) {
       }
       return require('react/lib/ReactTestUtils');
     }
-  });
+  });*/
 }
 
 module.exports = ReactNative;

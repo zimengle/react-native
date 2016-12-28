@@ -15,7 +15,7 @@ const NativeModules = require('NativeModules');
 const Platform = require('Platform');
 
 const defineLazyObjectProperty = require('defineLazyObjectProperty');
-const findNodeHandle = require('react/lib/findNodeHandle');
+// const findNodeHandle = require('react/lib/findNodeHandle');
 const invariant = require('fbjs/lib/invariant');
 
 const { UIManager } = NativeModules;
@@ -41,7 +41,7 @@ const _takeSnapshot = UIManager.takeSnapshot;
  * Returns a Promise.
  * @platform ios
  */
-UIManager.takeSnapshot = async function(
+/*UIManager.takeSnapshot = async function(
   view ?: 'window' | ReactElement<any> | number,
   options ?: {
     width ?: number,
@@ -58,7 +58,7 @@ UIManager.takeSnapshot = async function(
     view = findNodeHandle(view) || 'window';
   }
   return _takeSnapshot(view, options);
-};
+};*/
 
 /**
  * Copies the ViewManager constants and commands into UIManager. This is
