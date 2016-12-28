@@ -66,8 +66,10 @@ var AppRegistry = {
 
   registerComponent: function(appKey: string, getComponentFunc: ComponentProvider): string {
     runnables[appKey] = {
-      run: (appParameters) =>
-        renderApplication(getComponentFunc(), appParameters.initialProps, appParameters.rootTag)
+      run: (appParameters) => {
+        getComponentFunc(appParameters.initialProps, appParameters.rootTag);
+      }
+        // renderApplication(getComponentFunc(), appParameters.initialProps, appParameters.rootTag)
     };
     return appKey;
   },

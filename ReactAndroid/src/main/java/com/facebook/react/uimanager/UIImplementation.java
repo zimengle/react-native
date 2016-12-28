@@ -8,6 +8,8 @@
  */
 package com.facebook.react.uimanager;
 
+import android.util.Log;
+
 import javax.annotation.Nullable;
 
 import java.util.Arrays;
