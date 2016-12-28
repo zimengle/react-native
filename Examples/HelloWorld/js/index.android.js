@@ -1,15 +1,19 @@
+import React, {Component} from 'react';
 import {
-  AppRegistry
+  AppRegistry,
+  View,
+  Text
 } from 'react-native';
 
-var UIManager = require('react-native/lib/UIManager');
 
-
-
-AppRegistry.registerComponent('HelloWorld', (initialProps: Props, rootTag: any) => {
-  UIManager.createView(2, "RCTText", rootTag, {height: 100, backgroundColor: -65536});
-  UIManager.createView(3, "RCTRawText", rootTag, {"text":"HelloWorld"});
-  UIManager.setChildren(2, [3]);
-  UIManager.setChildren(1, [2]);
-  alert("123");
-});
+class App extends Component {
+  constructor(){
+    super();
+    // a.b.c();
+  }
+  render() {
+    return <Text style={{height:20,backgroundColor:"#ff0000"}}>HelloWorld</Text>
+  }
+}
+// HeapCapture.captureHeap("./data");
+AppRegistry.registerComponent('HelloWorld', () => App);
