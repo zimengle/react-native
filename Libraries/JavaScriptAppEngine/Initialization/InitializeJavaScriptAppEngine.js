@@ -245,3 +245,10 @@ setUpDevTools();
 require('RCTDeviceEventEmitter');
 require('RCTNativeAppEventEmitter');
 require('PerformanceLogger');
+
+/**
+ * @todo 这里事件需要托管
+ */
+var RCTEventEmitter = require('react-native/lib/RCTEventEmitter');
+var ReactNativeEventEmitter = require('react/lib/ReactNativeEventEmitter');
+RCTEventEmitter.register(ReactNativeEventEmitter);
