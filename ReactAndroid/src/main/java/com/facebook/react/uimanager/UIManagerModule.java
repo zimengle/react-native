@@ -289,6 +289,18 @@ public class UIManagerModule extends ReactContextBaseJavaModule implements
     mUIImplementation.setChildren(viewTag, childrenTags);
   }
 
+  @ReactMethod
+  public void appendChild(
+          int viewTag,
+          ReadableArray childrenTags) {
+      if (DEBUG) {
+          Log.d(
+                  ReactConstants.TAG,
+                  "(UIManager.setChildren) tag: " + viewTag + ", children: " + childrenTags);
+      }
+      mUIImplementation.appendChild(viewTag, childrenTags);
+  }
+
   /**
    * Replaces the View specified by oldTag with the View specified by newTag within oldTag's parent.
    * This resolves to a simple {@link #manageChildren} call, but React doesn't have enough info in

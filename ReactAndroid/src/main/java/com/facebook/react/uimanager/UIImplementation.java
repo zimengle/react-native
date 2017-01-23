@@ -379,6 +379,28 @@ public class UIImplementation {
     }
   }
 
+  public void appendChild(
+          int viewTag,
+          ReadableArray childrenTags) {
+
+    ReactShadowNode cssNodeToManage = mShadowNodeRegistry.getNode(viewTag);
+
+    for (int i = 0; i < childrenTags.size(); i++) {
+      ReactShadowNode cssNodeToAdd = mShadowNodeRegistry.getNode(childrenTags.getInt(i));
+      if (cssNodeToAdd == null) {
+        throw new IllegalViewOperationException("Trying to add unknown view tag: "
+                + childrenTags.getInt(i));
+      }
+      cssNodeToManage.append(cssNodeToAdd);
+    }
+
+    if (!cssNodeToManage.isVirtual() && !cssNodeToManage.isVirtualAnchor()) {
+      mNativeViewHierarchyOptimizer.handleSetChildren(
+              cssNodeToManage,
+              childrenTags);
+    }
+  }
+
   /**
    * Replaces the View specified by oldTag with the View specified by newTag within oldTag's parent.
    */

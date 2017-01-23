@@ -92,6 +92,21 @@ public class CSSNode implements CSSNodeAPI<CSSNode> {
     dirty();
   }
 
+
+  public void appendChild(CSSNode child) {
+    if (child.mParent != null) {
+      throw new IllegalStateException("Child already has a parent, it must be removed first.");
+    }
+    if (mChildren == null) {
+      // 4 is kinda arbitrary, but the default of 10 seems really high for an average View.
+      mChildren = new ArrayList<>(4);
+    }
+
+    mChildren.add(child);
+    child.mParent = this;
+    dirty();
+  }
+
   @Override
   public CSSNode removeChildAt(int i) {
     Assertions.assertNotNull(mChildren);

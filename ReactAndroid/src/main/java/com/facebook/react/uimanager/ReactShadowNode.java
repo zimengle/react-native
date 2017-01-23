@@ -162,6 +162,11 @@ public class ReactShadowNode extends CSSNode {
     }
   }
 
+  public void append(CSSNode child){
+    this.appendChild(child);
+  }
+
+
   @Override
   public void addChildAt(CSSNode child, int i) {
     super.addChildAt(child, i);
