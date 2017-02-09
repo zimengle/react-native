@@ -296,7 +296,7 @@ public class UIManagerModule extends ReactContextBaseJavaModule implements
       if (DEBUG) {
           Log.d(
                   ReactConstants.TAG,
-                  "(UIManager.setChildren) tag: " + viewTag + ", children: " + childrenTags);
+                  "(UIManager.appendChild) tag: " + viewTag + ", children: " + childrenTags);
       }
       mUIImplementation.appendChild(viewTag, childrenTags);
   }
