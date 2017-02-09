@@ -8,6 +8,8 @@
  */
 package com.facebook.react.uimanager;
 
+import android.util.Log;
+
 import javax.annotation.Nullable;
 
 import java.util.Arrays;
@@ -374,6 +376,28 @@ public class UIImplementation {
       mNativeViewHierarchyOptimizer.handleSetChildren(
         cssNodeToManage,
         childrenTags);
+    }
+  }
+
+  public void appendChild(
+          int viewTag,
+          ReadableArray childrenTags) {
+
+    ReactShadowNode cssNodeToManage = mShadowNodeRegistry.getNode(viewTag);
+
+    for (int i = 0; i < childrenTags.size(); i++) {
+      ReactShadowNode cssNodeToAdd = mShadowNodeRegistry.getNode(childrenTags.getInt(i));
+      if (cssNodeToAdd == null) {
+        throw new IllegalViewOperationException("Trying to add unknown view tag: "
+                + childrenTags.getInt(i));
+      }
+      cssNodeToManage.append(cssNodeToAdd);
+    }
+
+    if (!cssNodeToManage.isVirtual() && !cssNodeToManage.isVirtualAnchor()) {
+      mNativeViewHierarchyOptimizer.handleSetChildren(
+              cssNodeToManage,
+              childrenTags);
     }
   }
 

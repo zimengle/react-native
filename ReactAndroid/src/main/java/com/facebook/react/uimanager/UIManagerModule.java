@@ -9,13 +9,13 @@
 
 package com.facebook.react.uimanager;
 
+import android.util.Log;
+
 import javax.annotation.Nullable;
 
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.facebook.common.logging.FLog;
 import com.facebook.react.animation.Animation;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.LifecycleEventListener;
@@ -73,7 +73,7 @@ public class UIManagerModule extends ReactContextBaseJavaModule implements
   // Keep in sync with ReactIOSTagHandles JS module - see that file for an explanation on why the
   // increment here is 10
   private static final int ROOT_VIEW_TAG_INCREMENT = 10;
-  private static final boolean DEBUG = false;
+  private static final boolean DEBUG = true;
 
   private final EventDispatcher mEventDispatcher;
   private final Map<String, Object> mModuleConstants;
@@ -215,7 +215,7 @@ public class UIManagerModule extends ReactContextBaseJavaModule implements
   @ReactMethod
   public void createView(int tag, String className, int rootViewTag, ReadableMap props) {
     if (DEBUG) {
-      FLog.d(
+      Log.d(
           ReactConstants.TAG,
           "(UIManager.createView) tag: " + tag + ", class: " + className + ", props: " + props);
     }
@@ -225,7 +225,7 @@ public class UIManagerModule extends ReactContextBaseJavaModule implements
   @ReactMethod
   public void updateView(int tag, String className, ReadableMap props) {
     if (DEBUG) {
-      FLog.d(
+      Log.d(
           ReactConstants.TAG,
           "(UIManager.updateView) tag: " + tag + ", class: " + className + ", props: " + props);
     }
@@ -252,7 +252,7 @@ public class UIManagerModule extends ReactContextBaseJavaModule implements
       @Nullable ReadableArray addAtIndices,
       @Nullable ReadableArray removeFrom) {
     if (DEBUG) {
-      FLog.d(
+      Log.d(
           ReactConstants.TAG,
           "(UIManager.manageChildren) tag: " + viewTag +
           ", moveFrom: " + moveFrom +
@@ -282,11 +282,23 @@ public class UIManagerModule extends ReactContextBaseJavaModule implements
     int viewTag,
     ReadableArray childrenTags) {
     if (DEBUG) {
-      FLog.d(
+      Log.d(
           ReactConstants.TAG,
           "(UIManager.setChildren) tag: " + viewTag + ", children: " + childrenTags);
     }
     mUIImplementation.setChildren(viewTag, childrenTags);
+  }
+
+  @ReactMethod
+  public void appendChild(
+          int viewTag,
+          ReadableArray childrenTags) {
+      if (DEBUG) {
+          Log.d(
+                  ReactConstants.TAG,
+                  "(UIManager.appendChild) tag: " + viewTag + ", children: " + childrenTags);
+      }
+      mUIImplementation.appendChild(viewTag, childrenTags);
   }
 
   /**

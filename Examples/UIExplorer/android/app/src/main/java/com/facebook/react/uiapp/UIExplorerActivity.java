@@ -61,6 +61,6 @@ public class UIExplorerActivity extends ReactActivity {
 
   @Override
   protected String getMainComponentName() {
-    return "UIExplorerApp";
+    return "HelloWorld";
   }
 }

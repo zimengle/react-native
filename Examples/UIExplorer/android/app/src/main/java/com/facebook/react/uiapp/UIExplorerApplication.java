@@ -30,12 +30,12 @@ public class UIExplorerApplication extends Application implements ReactApplicati
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
     public String getJSMainModuleName() {
-      return "Examples/UIExplorer/js/UIExplorerApp.android";
+      return "Examples/HelloWorld/index.android";
     }
 
     @Override
     public @Nullable String getBundleAssetName() {
-      return "UIExplorerApp.android.bundle";
+      return "index.android.bundle";
     }
 
     @Override
