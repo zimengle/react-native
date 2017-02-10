@@ -4,9 +4,9 @@ import android.os.Build;
 
 public class AndroidInfoHelpers {
 
-  public static final String EMULATOR_LOCALHOST = "10.0.2.2:8081";
-  public static final String GENYMOTION_LOCALHOST = "10.0.3.2:8081";
-  public static final String DEVICE_LOCALHOST = "localhost:8081";
+  public static final String EMULATOR_LOCALHOST = "10.0.2.2:8999";
+  public static final String GENYMOTION_LOCALHOST = "10.0.3.2:8999";
+  public static final String DEVICE_LOCALHOST = "localhost:8999";
 
   private static boolean isRunningOnGenymotion() {
     return Build.FINGERPRINT.contains("vbox");
